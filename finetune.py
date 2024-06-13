@@ -111,7 +111,8 @@ def train(
 
     model = LlamaForCausalLM.from_pretrained(
         base_model,
-        load_in_8bit=True,
+        # TODO: MPS 不支持只能设置成 False
+        load_in_8bit=False,
         torch_dtype=torch.float16,
         device_map=device_map,
     )
@@ -239,7 +240,8 @@ def train(
             warmup_steps=100,
             num_train_epochs=num_epochs,
             learning_rate=learning_rate,
-            fp16=True,
+            # TODO: MPS 不支持只能设置成 False
+            fp16=False,
             logging_steps=10,
             optim="adamw_torch",
             evaluation_strategy="steps" if val_set_size > 0 else "no",
