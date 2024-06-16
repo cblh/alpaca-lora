@@ -22,7 +22,6 @@ try:
 except:  # noqa: E722
     pass
 
-
 def main(
     load_8bit: bool = False,
     base_model: str = "",
@@ -185,7 +184,7 @@ def main(
             gr.components.Checkbox(label="Stream output"),
         ],
         outputs=[
-            gr.inputs.Textbox(
+            gr.Textbox(
                 lines=5,
                 label="Output",
             )
